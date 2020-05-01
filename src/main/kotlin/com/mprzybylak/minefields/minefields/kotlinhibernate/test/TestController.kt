@@ -29,6 +29,6 @@ class TestController {
                 ?.getResultList()
                 ?.stream()
                 ?.map { it.toString() }
-                ?.collect(Collectors.joining("\n")) ?: ""
+                ?.collect(Collectors.joining()) ?: ""
     }
 }
