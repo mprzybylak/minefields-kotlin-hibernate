@@ -3,6 +3,8 @@ package com.mprzybylak.minefields.minefields.kotlinhibernate.test
 import com.mprzybylak.minefields.minefields.kotlinhibernate.KotlinHibernateApplication
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,16 +26,16 @@ class TestControllerTest {
     val ctrl: TestController? = null
 
     @Test
-    fun test() {
+    fun storeAndLoadEntity() {
         val ret1 = ctrl?.storeEntity("abc")
         val ret2 = ctrl?.loadEntity()
-        Assertions.assertEquals("ok", ret1)
-        Assertions.assertEquals("1=abc, ", ret2)
+        assertEquals("ok", ret1)
+        assertEquals("1=abc, ", ret2)
     }
 
     @Test
     fun cannotStoreEmptyText() {
-        Assertions.assertThrows(TransactionSystemException::class.java) { ctrl?.storeEntity("") }
+        assertThrows(TransactionSystemException::class.java) { ctrl?.storeEntity("") }
     }
 
 }
